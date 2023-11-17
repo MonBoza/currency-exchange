@@ -15,15 +15,20 @@ async function getExchangeRate(USD, selectedCurrencies) {
 
 // UI
 
-function printElements(response, USD) {
+function printElements(response, USD, selectedCurrencies) {
     const displayResults = document.getElementById("displayResults");
     displayResults.innerHTML = "";
-    const usdAmount = document.createElementById("displayResults");
-    usdAmount.textContent = `USD Amount$${USD}`;
-    displayResults.appendChild(usdAmount)
-    for(const currency in response.conversionRates) {
-        const exchangeRate = response.conversionRates[currency];
-
+    const usdAmount = document.createElement("p");
+    usdAmount.textContent = `USD Amount $${USD}`;
+    displayResults.appendChild(usdAmount);
+    for(const currency in response.conversion_rates) {
+        if (selectedCurrencies.includes(currency)){
+            const exchangeRate = response.conversion_rates[currency];
+            const listItem = document.createElement("li");
+            listItem.textContent =`${currency}: ${exchangeRate}`;
+            displayResults.appendChild(listItem);
+        }
+    }
 }
 
 function printError(error, USD) {
@@ -35,8 +40,8 @@ function handleFormSubmission(event) {
     const USD = parseFloat(document.querySelector('#USD').value);
     const selectedCurrencies = Array.from(document.querySelectorAll("input[name='currency']:checked")).map(checkbox => checkbox.value);
     getExchangeRate(USD, selectedCurrencies);
-
 }
+
 window.addEventListener("load", function () {
     document.querySelector('#exchangeForm').addEventListener('submit', handleFormSubmission);
 });
