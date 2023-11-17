@@ -7,7 +7,7 @@ import CurrencyExchange from './currencyAPI';
 async function getExchangeRate(USD, selectedCurrencies) {
     const response = await CurrencyExchange.getExchangeRate(USD);
     if (response) {
-        printElements(response, USD);
+        printElements(response, USD, selectedCurrencies);
     } else {
         printError(response, USD);
     }
@@ -18,14 +18,20 @@ async function getExchangeRate(USD, selectedCurrencies) {
 function printElements(response, USD) {
     document.querySelector('#displayResults').innerText = `The exchange rate for ${USD} :`;
     const resultsContainer = document.querySelector('#displayResults');
-    const conversionRatesArray = response.conversion_rates;
-    console.log(response[8])
-    conversionRatesArray.forEach(entry => {
-        const [currency, rate] = entry
-        const listItems = document.createElement("li");
-        listItems.textContent =  `${currency}: ${rate}`
-        resultsContainer.appendChild(listItems);
+    const conversionRates =response.conversion_rates;
+    const selectedCurrencies = ['AUD','CAD','EUR','GBP','MXN','JPY']
+    selectedCurrencies.forEach(currency => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${currency}: ${conversionRates[currency]}`;
+        console.log(`${currency}`);
+        resultsContainer.appendChild(listItem);
     });
+    // for(const currency in conversionRates) {
+    //     const listItem = document.createElement("li");
+    //     listItem.textContent = `${currency}: ${conversionRates[currency]}`;
+    //     console.log(`${currency}`)
+    //     resultsContainer.appendChild(listItem);
+    // }
 } 
 
 function printError(error, USD) {
