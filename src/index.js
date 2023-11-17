@@ -5,11 +5,15 @@ import CurrencyExchange from './currencyAPI';
 
 // Business Logic
 async function getExchangeRate(USD, selectedCurrencies) {
-    const response = await CurrencyExchange.getExchangeRate(USD);
-    if (response) {
-        printElements(response, USD, selectedCurrencies);
-    } else {
+    const response = await CurrencyExchange.getExchangeRate(USD, selectedCurrencies);
+    if (response instanceof Error) {
         printError(response, USD);
+    } else {
+        const rates = response.conversion_rates;
+        const convertedAmounts = selectedCurrencies.map(currency => USD * rates[currency]);
+        printElements(convertedAmounts, USD, selectedCurrencies);
+
+        
     }
 }
 
