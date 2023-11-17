@@ -33,8 +33,10 @@
 * Open the project in your favorite code editor.
 * Navigate to the to the bottom of the directory.
 * Open index.HTML
-
-* To get an API_KEY click on this link {} and sign up for an account.
+* To get an API_KEY visit https://www.exchangerate-api.com/docs/overview .
+* Input your email address and click the "Get Free Key" button.
+* You will then be prompted to create an account with your email address, first and password. Agree to the terms and click "Get Started" 
+* You will then be able to access the dashboard that contains your API key and remaining API calls.*
 
 
 ## Known Bugs

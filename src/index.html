@@ -1,8 +1,43 @@
-<html lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Exchange</title>
 </head>
 <body>
-  <div>Hello world!</div>
-  <img src="./assets/images/stock-puppy-photo.jpg" alt="such a pup!"/>
+  <h1>Currency Exchange Converter</h1>
+  <h2>Check live foreign currency exchange rates</h2>
+  <div id="currencyForm">
+    <form>
+      <label for="USD"></label>
+      <br />Amount
+      <input id="USD" type="number" name="USD" required> USD
+      <h4> Select desired currency</h4>
+      <input type="radio" name="EUR" value="EUR">EUR
+      <br />
+      <input type="radio" name="AUD" value="AUD">AUD
+      <br />
+      <input type="radio" name="CAD" value="CAD">CAD
+      <br />
+      <input type="radio" name="GBP" value="GBP">GBP
+      <br />
+      <input type="radio" name="MXN" value="MXN">MXN
+      <br />
+      <input type="radio" name="NZD" value="NZD">NZD
+      <br />
+      <input type="radio" name="BZD" value="BZD">BZD
+      <br />
+      <input type="radio" name="INR" value="INR">INR
+      <br />
+      <br />
+      <button type="submit" class="btn-success">Get Rates</button>
+    </form>
+  </div>
+  <br />
+  <div class="container" id="results">
+    <p id="displayResults"></p>
+  </div>
+
 </body>
 </html>
