@@ -7,31 +7,30 @@ import CurrencyExchange from './currencyAPI';
 async function getExchangeRate(USD, selectedCurrencies) {
     const response = await CurrencyExchange.getExchangeRate(USD, selectedCurrencies);
     if (response instanceof Error) {
+        console.log('Selected Currencies:', selectedCurrencies);
+
         printError(response, USD);
     } else {
-        const rates = response.conversion_rates;
-        const convertedAmounts = selectedCurrencies.map(currency => USD * rates[currency]);
-        printElements(convertedAmounts, USD, selectedCurrencies);
-
+        printElements(USD, selectedCurrencies, response.conversion_rates);
+        console.log('Selected Currencies:', selectedCurrencies);
         
     }
 }
 
 // UI
 
-function printElements(response, USD, selectedCurrencies) {
+function printElements(USD, selectedCurrencies, rates) {
+    const convertedAmounts = selectedCurrencies.map(currency => USD * rates[currency]);
     const displayResults = document.getElementById("displayResults");
+    console.log(displayResults);
     displayResults.innerHTML = "";
     const usdAmount = document.createElement("p");
     usdAmount.textContent = `USD Amount $${USD}`;
     displayResults.appendChild(usdAmount);
-    for(const currency in response.conversion_rates) {
-        if (selectedCurrencies.includes(currency)){
-            const exchangeRate = response.conversion_rates[currency];
-            const listItem = document.createElement("li");
-            listItem.textContent =`${currency}: ${exchangeRate}`;
-            displayResults.appendChild(listItem);
-        }
+    for (let i = 0; i < selectedCurrencies.length; i++) {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${selectedCurrencies[i]}: ${convertedAmounts[i]}`;
+        displayResults.appendChild(listItem);
     }
 }
 
@@ -45,6 +44,7 @@ function handleFormSubmission(event) {
     const selectedCurrencies = Array.from(document.querySelectorAll("input[name='currency']:checked")).map(checkbox => checkbox.value);
     getExchangeRate(USD, selectedCurrencies);
 }
+
 
 window.addEventListener("load", function () {
     document.querySelector('#exchangeForm').addEventListener('submit', handleFormSubmission);
