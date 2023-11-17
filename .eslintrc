@@ -12,6 +12,6 @@
     "rules": {
       "semi": 1,
       "indent": ["warn", 4],
-      "no-console": "warn"
+      // "no-console": "warn"
     }
   }
