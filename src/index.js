@@ -1,50 +1,41 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import CurrencyExchange from './currencyAPI';
+import ConversionExchange from './services/API-helper';
 
-// Business Logic
-async function getExchangeRate(USD, selectedCurrencies) {
-    const response = await CurrencyExchange.getExchangeRate(USD, selectedCurrencies);
-    if (response instanceof Error) {
-        console.log('Selected Currencies:', selectedCurrencies);
-
-        printError(response, USD);
+async function getConversion(baseAmount, baseCode, targetCode) {
+    const response = await ConversionExchange.getConversion(baseAmount, baseCode, targetCode);
+    if (response) {
+        printElements(response, baseAmount, baseCode, targetCode);
     } else {
-        printElements(USD, selectedCurrencies, response.conversion_rates);
-        console.log('Selected Currencies:', selectedCurrencies);
-        
+        printError(response, baseAmount, baseCode, targetCode);
     }
 }
 
-// UI
 
-function printElements(USD, selectedCurrencies, rates) {
-    const convertedAmounts = selectedCurrencies.map(currency => USD * rates[currency]);
+
+function printElements(response) {
+    document.getElementById('baseAmount').value = response["conversion_result"];
     const displayResults = document.getElementById("displayResults");
     console.log(displayResults);
     displayResults.innerHTML = "";
+    const listItems = document.createElement("li");
     const usdAmount = document.createElement("p");
-    usdAmount.textContent = `USD Amount $${USD}`;
-    displayResults.appendChild(usdAmount);
-    for (let i = 0; i < selectedCurrencies.length; i++) {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${selectedCurrencies[i]}: ${convertedAmounts[i]}`;
-        displayResults.appendChild(listItem);
-    }
+    usdAmount.textContent = `USD Amount $${baseAmount}`;
+    listItems.textContent =`${baseAmount}: ${targetCode}`;
+    displayResults.appendChild(listItems);
 }
 
-function printError(error, USD) {
-    document.querySelector('#showResponse').innerHTML =`There was an error accessing the currency exchange rate for ${USD} ${error}.`;
+function printError(error, baseAmount, targetCode) {
+    document.querySelector('#showResponse').innerHTML =`There was an error accessing the currency exchange rate for ${baseAmount} ${targetCode} ${error}.`;
 }
 
 function handleFormSubmission(event) {
     event.preventDefault();
-    const USD = parseFloat(document.querySelector('#USD').value);
-    const selectedCurrencies = Array.from(document.querySelectorAll("input[name='currency']:checked")).map(checkbox => checkbox.value);
-    getExchangeRate(USD, selectedCurrencies);
+    const targetCode = document.querySelectorAll("input[name='targetCode']:checked");
+    const baseAmount = parseFloat(document.querySelector('#baseAmount').value);
+    getConversion( baseAmount, targetCode);
 }
-
 
 window.addEventListener("load", function () {
     document.querySelector('#exchangeForm').addEventListener('submit', handleFormSubmission);

@@ -1,6 +1,6 @@
-# (Application Name)
+# Currency Exchange
 
-#### (Brief Description of Application)
+#### This app allows users to input a dollar amount and it returns the updated amount by chosen currency.
 
 #### By Monica Barboza
 
@@ -17,11 +17,10 @@
 * Jest
 
 ## Description
-
 ## Setup/Installation Requirements
 
 * Open terminal or command prompt.
-* Clone the repository by running the following command to your desktop: git clone https://github.com/MonBoza/project.git
+* Clone the repository by running the following command to your desktop: git clone https://github.com/MonBoza/currency-exchange.git
 * Make sure .gitignore is added to repository.
 * Create a .env file to  safely store your API_KEY and process.env.API_KEY then add .env to .gitignore.
 * Install Packages with $ npm install.
