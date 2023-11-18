@@ -1,58 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Currency Exchange</title>
 </head>
+
 <body>
   <div class="container mt-5">
     <h1 class="text-center">Cute Currency Exchange Converter</h1>
     <h2 class="text-center">Check live foreign currency exchange rates</h2>
-    <div id="currencyForm" class="mt-4">
+    <div id="currency" class="mt-4">
       <form id="exchangeForm">
         <div class="form-group">
           <label for="baseAmount">Amount</label>
-          <input id="baseAmount" type="number" class="form-control" name="baseAmount" required>
+          <input id="baseAmount" type="number" class="form-control" name="baseAmount" value="USD" required>USD
         </div>
         <div class="form-group">
-          <h4>Select desired currency</h4>
-          
+          <h4>Select desired currency to Exchange to:</h4>
+
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="targetCode" value="AUD" id="AUD">
-            <img src="https://www.mtonauticastore.com/data/prod/img/1363.jpg" style="width: 20px;" alt="AUD Flag" class="mr-2">
+            <input type="radio" class="form-check-input" name="targetCode" value="AUD" id="AUD">
+            <img src="https://www.mtonauticastore.com/data/prod/img/1363.jpg" style="width: 20px;" alt="AUD Flag" class="mr-2" selected>
             <label class="form-check-label" for="AUD">AUD</label>
+           
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="targetCode" value="CAD" id="CAD">
+            <input type="radio" class="form-check-input" name="targetCode" value="CAD" id="CAD">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg" style="width: 20px;" alt="CAD Flag" class="mr-2">
             <label class="form-check-label" for="CAD">CAD</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="targetCode" value="EUR" id="EUR">
+            <input type="radio" class="form-check-input" name="targetCode" value="EUR" id="EUR">
+            <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/eu-stars-european-flag-euro-flag-of-europe-european-union-flag-brussels-brexit-tom-hill.jpg" style="width: 20px;" alt="EUR Flag" class="mr-2">
             <label class="form-check-label" for="EUR">EUR</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="targetCode" value="GBP" id="GBP">
+            <input type="radio" class="form-check-input" name="targetCode" value="GBP" id="GBP">
+            <img src="https://media.istockphoto.com/id/497118178/vector/flag-of-great-britain.jpg?s=612x612&w=0&k=20&c=yAuSdTVvmou5r5_gEj7NHdGdYmJfQPorq_9UFz2iEWk=" style="width: 20px;" alt="GBP Flag" class="mr-2">
             <label class="form-check-label" for="GBP">GBP</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="targetCode" value="MXN" id="MXN">
+            <input type="radio" class="form-check-input" name="targetCode" value="MXN" id="MXN">
+            <img src="https://mexicanappetizersandmore.com/wp-content/uploads/2016/07/Mexico_flag-3.jpg" style="width: 20px;" alt="MXN Flag" class="mr-2">
             <label class="form-check-label" for="MXN">MXN</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="targetCode" value="JPY" id="JPY">
+            <input type="radio" class="form-check-input" name="targetCode" value="JPY" id="JPY">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/2560px-Flag_of_Japan.svg.png" style="width: 20px;" alt="JPY Flag" class="mr-2">
             <label class="form-check-label" for="JPY">JPY</label>
           </div>
         </div>
         <button type="submit" class="btn btn-success">Get Rates</button>
       </form>
     </div>
-
     <div class="container mt-4" id="results-container">
       <h3 class="text-center">Conversion Results</h3>
       <p id="displayResults"></p>
+      <p id="showResponse"></p>
     </div>
   </div>
 
 </body>
+
 </html>
