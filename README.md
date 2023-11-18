@@ -17,6 +17,8 @@
 * Jest
 
 ## Description
+* This App allows user to input an amount in US dollars and they can select one of 6 different currencies and the app will display the conversion.
+* Example: If the user inputs $10.00 and selects MXN the app displays "The exchange rate for $10 USD to MXN is $172.188" 
 ## Setup/Installation Requirements
 
 * Open terminal or command prompt.
@@ -39,9 +41,6 @@
 
 
 ## Known Bugs
-
-* _Any known issues_
-* _should go here_
 
 ## License
 Copyright 2023 MONICA BARBOZA

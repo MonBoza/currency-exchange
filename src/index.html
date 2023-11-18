@@ -9,13 +9,14 @@
 
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Cute Currency Exchange Converter</h1>
+    <h1 class="text-center">Currency Exchange Converter</h1>
     <h2 class="text-center">Check live foreign currency exchange rates</h2>
     <div id="currency" class="mt-4">
       <form id="exchangeForm">
         <div class="form-group">
-          <label for="baseAmount">Amount</label>
-          <input id="baseAmount" type="number" class="form-control" name="baseAmount" value="USD" required>USD
+          <label for="baseAmount">Amount in USD</label>
+          <br />
+          <input id="baseAmount" type="number" min="0" class="form-control" name="baseAmount" style="width: 180px;" required>
         </div>
         <div class="form-group">
           <h4>Select desired currency to Exchange to:</h4>

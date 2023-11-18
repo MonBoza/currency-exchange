@@ -5,19 +5,25 @@ import ConversionExchange from './services/API-helper';
 
 async function getConversion(baseAmount, targetCode) {
     const response = await ConversionExchange.getConversion(baseAmount, targetCode);
-    if (response) {
-        printElements(response, baseAmount, targetCode);
-    } else {
-        printError(response, baseAmount, targetCode);
+    if (response instanceof Error) {
+        if(response.message !== 200) {
+            printError(`HTTP Status Code: ${response.status}`, baseAmount, targetCode);  
+        } else {
+            printError(response, baseAmount, targetCode);
+        } 
+    }else {
+        printElements(response, baseAmount, targetCode); 
     }
 }
+
+
 
 // UI Logic
 
 function printElements(response, baseAmount, targetCode) {
     const displayResults = document.querySelector('#displayResults');
-    if (response && response.hasOwnProperty('conversion_result')) {
-        displayResults.innerHTML = `The exchange rate for $${baseAmount} USD to ${targetCode} is $${response["conversion_result"]}`;
+    if (response && typeof response.conversion_result === 'number') {
+        displayResults.innerHTML = `The exchange amount for $${baseAmount} USD to ${targetCode} is $${response["conversion_result"]}`;
     } else {
         printError('Invalid response', baseAmount, targetCode);
     }
@@ -29,7 +35,6 @@ function printError(error, baseAmount, targetCode) {
 
 function handleFormSubmission(event) {
     event.preventDefault();
-
     const checkedRadioButton = document.querySelector("input[name='targetCode']:checked");
 
     if (checkedRadioButton) {
