@@ -1,6 +1,6 @@
 # Currency Exchange
 
-#### This app allows users to input a dollar amount and it returns the updated amount by chosen currency.
+#### This app allows users to input a dollar amount and it returns the updated amount by chosen currency exchange rate.
 
 #### By Monica Barboza
 
