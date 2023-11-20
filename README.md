@@ -11,10 +11,11 @@
 * JavaScript
 * Webpack
 * NPM
-* ESLinter
+* ESLint
 * Babel
 * Bootstrap
 * Jest
+* Dotenv
 
 ## Description
 * This App allows user to input an amount in US dollars and they can select one of 6 different currencies and the app will display the conversion.
@@ -24,7 +25,7 @@
 * Open terminal or command prompt.
 * Clone the repository by running the following command to your desktop: git clone https://github.com/MonBoza/currency-exchange.git
 * Make sure .gitignore is added to repository.
-* Create a .env file to  safely store your API_KEY and process.env.API_KEY then add .env to .gitignore.
+* Create a .env file to  safely store your API_KEY and process.env.API_KEY then add .env to .gitignore. (see API Key setup)
 * Install Packages with $ npm install.
 * Build the project with webpack using $npm run build.
 * Start a development Server with $ npm run start.
@@ -34,13 +35,17 @@
 * Open the project in your favorite code editor.
 * Navigate to the to the bottom of the directory.
 * Open index.HTML
+
+## API KEY setup
 * To get an API_KEY visit https://www.exchangerate-api.com/docs/overview .
 * Input your email address and click the "Get Free Key" button.
 * You will then be prompted to create an account with your email address, first and password. Agree to the terms and click "Get Started" 
-* You will then be able to access the dashboard that contains your API key and remaining API calls.*
+* You will then be able to access the dashboard that contains your API key and remaining API calls.
+* Store you API_KEY in .env file
 
 
 ## Known Bugs
+* No known bugs.
 
 ## License
 Copyright 2023 MONICA BARBOZA
@@ -53,4 +58,6 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 Email: (mailto:MonBoza@gmail.com) 
 
-Copyright (c) Month day, 2023 Monica Barboza
+Copyright (c) November 17, 2023 Monica Barboza
+
+* github profile: https://github.com/MonBoza
