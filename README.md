@@ -26,6 +26,7 @@
 * Clone the repository by running the following command to your desktop: git clone https://github.com/MonBoza/currency-exchange.git
 * Make sure .gitignore is added to repository.
 * Create a .env file to  safely store your API_KEY and process.env.API_KEY then add .env to .gitignore. (see API Key setup)
+* In the .env file you should store your API_KEY on the first line "API_KEY=yourAPIkey" and then "process.env.API_KEY" on the second line to call in your url.
 * Install Packages with $ npm install.
 * Build the project with webpack using $npm run build.
 * Start a development Server with $ npm run start.
