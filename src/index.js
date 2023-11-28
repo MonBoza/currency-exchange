@@ -35,16 +35,7 @@ function printElements(response, baseAmount, targetCode) {
 }
 
 function printError(error, baseAmount, targetCode) {
-    const showResponse = document.querySelector('#showResponse');
-    if (showResponse) {
-        showResponse.innerHTML = `There was an error accessing the current exchange rate for ${baseAmount} ${targetCode} ${error}.`;
-    } else {
-        const errorMessageDiv = document.createElement('div');
-        errorMessageDiv.id = 'showResponse';
-        errorMessageDiv.innerHTML = `There was an error accessing the current exchange rate for ${baseAmount} ${targetCode} ${error}.`;
-        const container = document.querySelector('#results-container');
-        container.appendChild(errorMessageDiv);
-    }
+    document.querySelector('#showResponse').innerHTML = `There was an error accessing the current exchange rate for ${baseAmount} ${targetCode} ${error}.`;
 }
 
 function handleFormSubmission(event) {
